@@ -25,7 +25,9 @@ jobs:
       issues: write 
     steps:
       - name: echo inputs
-        run: echo ${{ inputs.title }} ${{ inputs.body }}
+        env:
+          ARGS: ${{ inputs.title }} ${{ inputs.body }}
+        run: echo "$ARGS"
       - name: Create issue using REST API
         run: |
           curl --request POST \
